@@ -1,0 +1,51 @@
+---
+import { NAV_ITEMS, SITE } from '@/config/site';
+import { withBase } from '@/lib/format';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = SITE.title, description = SITE.description } = Astro.props;
+const pageTitle = title === SITE.title ? title : `${title} · ${SITE.title}`;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <link rel="icon" type="image/png" href={withBase('/assets/yuzhen-favicon.png')} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到正文</a>
+    <header class="site-header">
+      <a class="brand" href={withBase('/')} aria-label={`${SITE.title} 首页`}>
+        <img src={withBase('/assets/yuzhen-logo.png')} alt="" width="44" height="44" />
+        <span>{SITE.title}</span>
+      </a>
+      <nav class="site-nav" aria-label="主导航">
+        {
+          NAV_ITEMS.map((item) => (
+            <a href={withBase(item.href)}>{item.label}</a>
+          ))
+        }
+      </nav>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>{SITE.title}</p>
+      <p>{SITE.description}</p>
+    </footer>
+  </body>
+</html>

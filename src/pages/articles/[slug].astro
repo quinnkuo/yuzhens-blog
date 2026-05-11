@@ -1,0 +1,46 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPublishedArticles, getTopicMap, topicName } from '@/lib/content';
+import { formatDate, withBase } from '@/lib/format';
+
+export async function getStaticPaths() {
+  const articles = await getPublishedArticles();
+  return articles.map((article) => ({
+    params: { slug: article.id },
+    props: { article }
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await render(article);
+const topicMap = await getTopicMap();
+---
+
+<BaseLayout title={article.data.title} description={article.data.description}>
+  <article class="article-page">
+    <header class="article-header">
+      <a class="breadcrumb" href={withBase('/articles/')}>文章</a>
+      <h1>{article.data.title}</h1>
+      <p>{article.data.description}</p>
+      <div class="article-meta">
+        <time datetime={article.data.pubDate.toISOString()}>{formatDate(article.data.pubDate)}</time>
+        {
+          article.data.topics.map((slug) => (
+            <a class="pill" href={withBase(`/topics/${slug}/`)}>{topicName(slug, topicMap)}</a>
+          ))
+        }
+      </div>
+      {
+        article.data.originalUrl && (
+          <a class="source-link" href={article.data.originalUrl} target="_blank" rel="noreferrer">
+            来源：{article.data.sourceLabel ?? '原文链接'}
+          </a>
+        )
+      }
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

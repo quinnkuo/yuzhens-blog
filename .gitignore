@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.playwright-mcp/
+.codex/
+.DS_Store
+npm-debug.log*
+.env
+.env.*
+!.env.example
+flomo@YZ-*/
+Logo/
+YZ Logo - *.png
+yuzhens-blog-*.png

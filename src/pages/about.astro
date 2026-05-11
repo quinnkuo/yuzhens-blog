@@ -1,0 +1,30 @@
+---
+import { SITE } from '@/config/site';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="关于" description="关于 Yuzhen 和这个博客。">
+  <section class="page-hero">
+    <p class="eyebrow">About</p>
+    <h1>关于 Yuzhen</h1>
+    <p>这里是一个普通人持续记录生活、工作和 AI 时代变化的地方。</p>
+  </section>
+
+  <section class="page-section about-layout">
+    <div class="prose">
+      <p>
+        我会在这里整理适合公开阅读的文章、作品和实践记录。原始日记与 flomo 笔记会继续作为私人素材库，
+        只有经过筛选、改写和脱敏的内容才会出现在网站上。
+      </p>
+      <p>
+        这个博客关注生活、工作和 AI，以及写作与创作本身。
+        它不会急着把所有内容一次性搬上来，而是先搭好一个可以长期生长的容器。
+      </p>
+    </div>
+    <aside class="about-aside">
+      <h2>继续关注</h2>
+      <p>公众号文章会逐步整理到这里，原文链接会在文章页保留。</p>
+      <a class="text-link strong" href={SITE.wechatUrl} target="_blank" rel="noreferrer">查看公众号文章</a>
+    </aside>
+  </section>
+</BaseLayout>

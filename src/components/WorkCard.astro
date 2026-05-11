@@ -1,0 +1,26 @@
+---
+import { formatDate, withBase } from '@/lib/format';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  type: string;
+  href: string;
+  external?: boolean;
+}
+
+const { title, description, date, type, href, external = false } = Astro.props;
+const safeHref = external ? href : withBase(href);
+---
+
+<article class="work-card">
+  <div class="work-type">{type}</div>
+  <h3>
+    <a href={safeHref} target={external ? '_blank' : undefined} rel={external ? 'noreferrer' : undefined}>
+      {title}
+    </a>
+  </h3>
+  <p>{description}</p>
+  <time datetime={date.toISOString()}>{formatDate(date)}</time>
+</article>

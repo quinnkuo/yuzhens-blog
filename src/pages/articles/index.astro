@@ -1,0 +1,38 @@
+---
+import ArticleCard from '@/components/ArticleCard.astro';
+import EmptyState from '@/components/EmptyState.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPublishedArticles, getTopicMap, topicName } from '@/lib/content';
+
+const articles = await getPublishedArticles();
+const topicMap = await getTopicMap();
+---
+
+<BaseLayout title="文章" description="Yuzhen's Blog 的公开文章。">
+  <section class="page-hero">
+    <p class="eyebrow">Articles</p>
+    <h1>文章</h1>
+    <p>这里放经过筛选、编辑、适合公开阅读的长文和随笔。</p>
+  </section>
+
+  <section class="page-section">
+    {
+      articles.length > 0 ? (
+        <div class="article-list">
+          {articles.map((article) => (
+            <ArticleCard
+              title={article.data.title}
+              description={article.data.description}
+              date={article.data.pubDate}
+              href={`/articles/${article.id}/`}
+              sourceLabel={article.data.sourceLabel}
+              topics={article.data.topics.map((slug) => ({ slug, name: topicName(slug, topicMap) }))}
+            />
+          ))}
+        </div>
+      ) : (
+        <EmptyState title="文章还在整理中" description="等第一批公开文章准备好后，会出现在这里。" />
+      )
+    }
+  </section>
+</BaseLayout>

@@ -1,0 +1,20 @@
+---
+import { withBase } from '@/lib/format';
+
+interface Props {
+  name: string;
+  summary: string;
+  slug: string;
+  accent?: string;
+}
+
+const { name, summary, slug, accent = 'green' } = Astro.props;
+---
+
+<article class={`topic-card accent-${accent}`}>
+  <a href={withBase(`/topics/${slug}/`)}>
+    <span class="topic-marker" aria-hidden="true"></span>
+    <h3>{name}</h3>
+    <p>{summary}</p>
+  </a>
+</article>

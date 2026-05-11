@@ -1,0 +1,30 @@
+---
+import TopicCard from '@/components/TopicCard.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getTopics } from '@/lib/content';
+
+const topics = await getTopics();
+---
+
+<BaseLayout title="主题" description="Yuzhen's Blog 的长期主题。">
+  <section class="page-hero">
+    <p class="eyebrow">Topics</p>
+    <h1>主题</h1>
+    <p>主题不是原始标签，而是面向读者整理出来的阅读路径。</p>
+  </section>
+
+  <section class="page-section">
+    <div class="topic-grid">
+      {
+        topics.map((topic) => (
+          <TopicCard
+            name={topic.data.name}
+            summary={topic.data.summary}
+            slug={topic.data.slug}
+            accent={topic.data.accent}
+          />
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

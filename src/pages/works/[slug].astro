@@ -1,0 +1,47 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPublishedWorks, getTopicMap, topicName } from '@/lib/content';
+import { formatDate, withBase } from '@/lib/format';
+
+export async function getStaticPaths() {
+  const works = await getPublishedWorks();
+  return works.map((work) => ({
+    params: { slug: work.id },
+    props: { work }
+  }));
+}
+
+const { work } = Astro.props;
+const { Content } = await render(work);
+const topicMap = await getTopicMap();
+---
+
+<BaseLayout title={work.data.title} description={work.data.description}>
+  <article class="article-page">
+    <header class="article-header">
+      <a class="breadcrumb" href={withBase('/works/')}>作品</a>
+      <p class="eyebrow">{work.data.type}</p>
+      <h1>{work.data.title}</h1>
+      <p>{work.data.description}</p>
+      <div class="article-meta">
+        <time datetime={work.data.date.toISOString()}>{formatDate(work.data.date)}</time>
+        {
+          work.data.topics.map((slug) => (
+            <a class="pill" href={withBase(`/topics/${slug}/`)}>{topicName(slug, topicMap)}</a>
+          ))
+        }
+      </div>
+      {
+        work.data.externalUrl && (
+          <a class="source-link" href={work.data.externalUrl} target="_blank" rel="noreferrer">
+            访问作品
+          </a>
+        )
+      }
+    </header>
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

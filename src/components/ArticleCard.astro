@@ -1,0 +1,33 @@
+---
+import { formatDate, withBase } from '@/lib/format';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  href: string;
+  topics?: Array<{ slug: string; name: string }>;
+  featured?: boolean;
+  sourceLabel?: string;
+}
+
+const { title, description, date, href, topics = [], featured = false, sourceLabel } = Astro.props;
+---
+
+<article class:list={['card', featured && 'card-featured']}>
+  <div class="card-meta">
+    <time datetime={date.toISOString()}>{formatDate(date)}</time>
+    {sourceLabel && <span>{sourceLabel}</span>}
+  </div>
+  <h3><a href={withBase(href)}>{title}</a></h3>
+  <p>{description}</p>
+  {
+    topics.length > 0 && (
+      <div class="pill-row" aria-label="文章主题">
+        {topics.map((topic) => (
+          <a class="pill" href={withBase(`/topics/${topic.slug}/`)}>{topic.name}</a>
+        ))}
+      </div>
+    )
+  }
+</article>

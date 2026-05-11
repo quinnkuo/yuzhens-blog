@@ -1,0 +1,37 @@
+---
+import EmptyState from '@/components/EmptyState.astro';
+import WorkCard from '@/components/WorkCard.astro';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { getPublishedWorks } from '@/lib/content';
+
+const works = await getPublishedWorks();
+---
+
+<BaseLayout title="作品" description="Yuzhen's Blog 的公开作品与实践。">
+  <section class="page-hero">
+    <p class="eyebrow">Works</p>
+    <h1>作品</h1>
+    <p>文章之外的创作、项目、分享和实践，会慢慢放在这里。</p>
+  </section>
+
+  <section class="page-section">
+    {
+      works.length > 0 ? (
+        <div class="work-grid">
+          {works.map((work) => (
+            <WorkCard
+              title={work.data.title}
+              description={work.data.description}
+              date={work.data.date}
+              type={work.data.type}
+              href={work.data.externalUrl ?? `/works/${work.id}/`}
+              external={Boolean(work.data.externalUrl)}
+            />
+          ))}
+        </div>
+      ) : (
+        <EmptyState title="作品还在整理中" description="第一批作品准备好后，会出现在这里。" />
+      )
+    }
+  </section>
+</BaseLayout>
