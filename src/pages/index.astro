@@ -1,19 +1,16 @@
 ---
 import TopicCard from '@/components/TopicCard.astro';
-import WorkCard from '@/components/WorkCard.astro';
 import { SITE } from '@/config/site';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getPublishedArticles, getPublishedWorks, getTopicMap, getTopics, topicName } from '@/lib/content';
+import { getPublishedArticles, getTopicMap, getTopics, topicName } from '@/lib/content';
 import { formatDate, withBase } from '@/lib/format';
 
 const articles = await getPublishedArticles();
-const works = await getPublishedWorks();
 const topics = await getTopics();
 const topicMap = await getTopicMap();
 
 const featuredArticles = articles.filter((article) => article.data.featured).slice(0, 3);
 const featuredTopics = topics.filter((topic) => topic.data.featured).slice(0, 4);
-const featuredWorks = works.filter((work) => work.data.featured).slice(0, 2);
 const recentItems = [
   ...articles.map((article) => ({
     title: article.data.title,
@@ -22,14 +19,6 @@ const recentItems = [
     href: `/articles/${article.id}/`,
     type: '文章',
     topics: article.data.topics
-  })),
-  ...works.map((work) => ({
-    title: work.data.title,
-    description: work.data.description,
-    date: work.data.date,
-    href: `/works/${work.id}/`,
-    type: work.data.type,
-    topics: work.data.topics
   }))
 ].sort((a, b) => Number(b.date) - Number(a.date)).slice(0, 5);
 ---
@@ -44,7 +33,7 @@ const recentItems = [
     <div class="intro-links" aria-label="主要入口">
       <a href={withBase('/articles/')}>文章</a>
       <a href={withBase('/topics/')}>主题</a>
-      <a href={withBase('/works/')}>作品</a>
+      <a href={withBase('/about/')}>关于</a>
     </div>
   </section>
 
@@ -95,28 +84,6 @@ const recentItems = [
             />
           ))
         }
-      </div>
-
-      <div class="side-block">
-        <div class="section-heading compact">
-          <p class="eyebrow">Works</p>
-          <h2>作品</h2>
-          <a class="text-link" href={withBase('/works/')}>全部作品</a>
-        </div>
-        <div class="stack">
-          {
-            featuredWorks.map((work) => (
-              <WorkCard
-                title={work.data.title}
-                description={work.data.description}
-                date={work.data.date}
-                type={work.data.type}
-                href={work.data.externalUrl ?? `/works/${work.id}/`}
-                external={Boolean(work.data.externalUrl)}
-              />
-            ))
-          }
-        </div>
       </div>
 
       <div class="side-note">

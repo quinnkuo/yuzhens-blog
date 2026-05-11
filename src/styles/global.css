@@ -292,8 +292,7 @@ img {
 }
 
 .article-grid,
-.topic-grid,
-.work-grid {
+.topic-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
@@ -306,7 +305,6 @@ img {
 
 .card,
 .topic-card,
-.work-card,
 .empty-state,
 .about-aside {
   background: var(--surface);
@@ -330,8 +328,7 @@ img {
 }
 
 .card h3,
-.topic-card h3,
-.work-card h3 {
+.topic-card h3 {
   margin: 12px 0 10px;
   font-size: 1.25rem;
   line-height: 1.35;
@@ -339,7 +336,6 @@ img {
 
 .card p,
 .topic-card p,
-.work-card p,
 .empty-state p,
 .about-aside p {
   color: var(--muted);
@@ -397,12 +393,6 @@ img {
 .stack {
   display: grid;
   gap: 16px;
-}
-
-.work-type {
-  color: var(--red);
-  font-weight: 700;
-  font-size: 0.82rem;
 }
 
 .update-list {
@@ -580,8 +570,7 @@ img {
   }
 
   .article-grid,
-  .topic-grid,
-  .work-grid {
+  .topic-grid {
     grid-template-columns: 1fr;
   }
 
@@ -608,7 +597,6 @@ img {
   .hero-panel,
   .card,
   .topic-card,
-  .work-card,
   .empty-state,
   .about-aside {
     padding: 18px;

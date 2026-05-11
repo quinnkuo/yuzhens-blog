@@ -31,21 +31,6 @@ const topics = defineCollection({
   })
 });
 
-const works = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/works' }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    date: z.coerce.date(),
-    type: z.string(),
-    status,
-    featured: z.boolean().default(false),
-    topics: z.array(z.string()).default([]),
-    externalUrl: z.url().optional(),
-    cover: z.string().optional()
-  })
-});
-
 const notes = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/notes' }),
   schema: z.object({
@@ -58,4 +43,4 @@ const notes = defineCollection({
   })
 });
 
-export const collections = { articles, topics, works, notes };
+export const collections = { articles, topics, notes };

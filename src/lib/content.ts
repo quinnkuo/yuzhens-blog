@@ -11,14 +11,6 @@ export async function getPublishedArticles() {
   return sortByDateDesc(articles);
 }
 
-export async function getPublishedWorks() {
-  const works = await getCollection('works', ({ data }) => {
-    return includeDrafts || data.status === 'published';
-  });
-
-  return sortByDateDesc(works);
-}
-
 export async function getPublishedNotes() {
   const notes = await getCollection('notes', ({ data }) => {
     return includeDrafts || data.status === 'published';

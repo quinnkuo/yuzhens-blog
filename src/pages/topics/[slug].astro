@@ -2,9 +2,8 @@
 import { render } from 'astro:content';
 import ArticleCard from '@/components/ArticleCard.astro';
 import EmptyState from '@/components/EmptyState.astro';
-import WorkCard from '@/components/WorkCard.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { getPublishedArticles, getPublishedWorks, getTopicMap, getTopics, topicName } from '@/lib/content';
+import { getPublishedArticles, getTopicMap, getTopics, topicName } from '@/lib/content';
 
 export async function getStaticPaths() {
   const topics = await getTopics();
@@ -18,7 +17,6 @@ const { topic } = Astro.props;
 const { Content } = await render(topic);
 const topicMap = await getTopicMap();
 const articles = (await getPublishedArticles()).filter((article) => article.data.topics.includes(topic.data.slug));
-const works = (await getPublishedWorks()).filter((work) => work.data.topics.includes(topic.data.slug));
 ---
 
 <BaseLayout title={topic.data.name} description={topic.data.summary}>
@@ -57,28 +55,4 @@ const works = (await getPublishedWorks()).filter((work) => work.data.topics.incl
     }
   </section>
 
-  <section class="page-section">
-    <div class="section-heading">
-      <p class="eyebrow">Works</p>
-      <h2>相关作品</h2>
-    </div>
-    {
-      works.length > 0 ? (
-        <div class="work-grid">
-          {works.map((work) => (
-            <WorkCard
-              title={work.data.title}
-              description={work.data.description}
-              date={work.data.date}
-              type={work.data.type}
-              href={work.data.externalUrl ?? `/works/${work.id}/`}
-              external={Boolean(work.data.externalUrl)}
-            />
-          ))}
-        </div>
-      ) : (
-        <EmptyState title="这个主题的作品还在整理中" description="等作品内容补齐后，会显示在这里。" />
-      )
-    }
-  </section>
 </BaseLayout>
