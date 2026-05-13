@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="zh-CN"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="完全不懂编程的我们，通过 Vibe coding 重写了一个 App（感受篇）我发现我们在这次重写 Slax"><meta name="generator" content="Astro v6.3.1"><meta property="og:title" content="完全不懂编程的我们，通过 Vibe coding 重写了一个App （工具篇） · Yuzhen's Blog"><meta property="og:description" content="完全不懂编程的我们，通过 Vibe coding 重写了一个 App（感受篇）我发现我们在这次重写 Slax"><meta property="og:type" content="website"><link rel="icon" type="image/png" href="/yuzhens-blog/assets/yuzhen-favicon.png"><title>完全不懂编程的我们，通过 Vibe coding 重写了一个App （工具篇） · Yuzhen&#39;s Blog</title><link rel="stylesheet" href="/yuzhens-blog/_astro/BaseLayout.Ckb13OJA.css"></head> <body> <a class="skip-link" href="#main">跳到正文</a> <header class="site-header"> <a class="brand" href="/yuzhens-blog/" aria-label="Yuzhen's Blog 首页"> <img src="/yuzhens-blog/assets/yuzhen-logo.png" alt="" width="44" height="44"> <span>Yuzhen&#39;s Blog</span> </a> <nav class="site-nav" aria-label="主导航"> <a href="/yuzhens-blog/">首页</a><a href="/yuzhens-blog/articles/">文章</a><a href="/yuzhens-blog/topics/">主题</a><a href="/yuzhens-blog/about/">关于</a> </nav> </header> <main id="main">  <article class="article-page"> <header class="article-header"> <a class="breadcrumb" href="/yuzhens-blog/articles/">文章</a> <h1>完全不懂编程的我们，通过 Vibe coding 重写了一个App （工具篇）</h1> <div class="article-meta"> <time datetime="2026-04-25T00:00:00.000Z">2026年4月25日</time> <a class="pill" href="/yuzhens-blog/topics/ai/">AI</a> </div> <a class="source-link" href="https://mp.weixin.qq.com/s/70S2bR64DOzBslaWegr3gQ" target="_blank" rel="noreferrer">
+来源：真不错真棒 </a> </header> <div class="prose"> <p><a href="https://mp.weixin.qq.com/s?__biz=MzA4OTA3ODA1Mg==&#x26;mid=2648684287&#x26;idx=1&#x26;sn=011302bd8ef35a980d6412d5c22ddff3&#x26;scene=21#wechat_redirect">完全不懂编程的我们，通过 Vibe coding 重写了一个 App（感受篇）</a></p>
+<p>接上篇，这篇内容分享我们在重写过程中主要使用的工具。</p>
+<p><img alt="完全不懂编程的我们，通过 Vibe coding 重写了一个App （工具篇）" loading="lazy" decoding="async"  width="1080" height="720" src="/yuzhens-blog/_astro/01.By2Bv0nu_Z2gQGCi.webp" ></p>
+<h3 id="一-真正上手写代码的工具">一、 真正上手写代码的工具</h3>
+<p><strong>1. Claude Code（主劳动力）</strong></p>
+<ul>
+<li>
+<p>怎么用：它就像一个能直接住进你电脑里的 AI 程序员。</p>
+</li>
+<li>
+<p>三种方式：官方自带客户端（我没用过）、终端；也可以在 VS Code 编辑器里装它的插件。</p>
+</li>
+<li>
+<p>建议：推荐在 VS Code 里用，左边看代码文件，右边跟 AI 聊天，它改了哪行代码你能看得清清楚楚，心里更踏实。</p>
+</li>
+</ul>
+<p><strong>2. 多个 AI 换着吹哨（交叉检查）</strong></p>
+<ul>
+<li>
+<p>Codex：专门用来检查代码。Claude 写完后，自动调用 Codex review。</p>
+</li>
+<li>
+<p>ChatGPT/ Gemini/豆包：备用方案。有时候 Claude 连不上，或者它在一个问题上绕晕了怎么也改不对，我就换个 AI 问问，往往换个思路问题就解开了。</p>
+</li>
+</ul>
+<p><strong>3. MCP 与 Skill（给 AI 递工具）</strong></p>
+<ul>
+<li>
+<p>MCP： 简单理解就是“插槽”。通过它，AI 就能读到你本地存的文档、数据库或者其他参考资料，不用你每次都手动复制给它。我们用到的 MCP：lanhu-MCP（<a href="https://github.com/dsphper/lanhu-mcp%EF%BC%89%5B%E7%94%A8">https://github.com/dsphper/lanhu-mcp）[用</a> AI 重写了一个 App，用了一个月，我学到了这些](<a href="https://mp.weixin.qq.com/s?__biz=Mzg5NDY4ODM1MA==&#x26;mid=2247486033&#x26;idx=1&#x26;sn=4cd56214e06cf4ebcfad57ac8fe0b0fd&#x26;scene=21#wechat_redirect)%E3%80%81Xcode">https://mp.weixin.qq.com/s?__biz=Mzg5NDY4ODM1MA==&#x26;mid=2247486033&#x26;idx=1&#x26;sn=4cd56214e06cf4ebcfad57ac8fe0b0fd&#x26;scene=21#wechat_redirect)、Xcode</a> mcp（开发 iOS 才需要用到）</p>
+</li>
+<li>
+<p>Skill：Skill 就是让 AI “学会”复杂的动作组合。它能把原本需要你下五六次指令才能完成的任务（比如：清理缓存+拉取分支+运行测试+提交代码），封装成一个简单的“大招”。</p>
+</li>
+<li>
+<p><strong>Superpowers：</strong> 这是一个非常强大的技能库，通过给 AI 设定一套严格的工作流和“技能包”，让 AI 像资深工程师一样思考和工作，而不是拿到需求就盲目写代码。<em>(地址：<a href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a>)</em></p>
+</li>
+<li>
+<p><strong>GStack：</strong> 这是 YC CEO Garry Tan 都在推崇的一套工作流。它能把那些琐碎的、重复性的开发动作标准化。有了它，你不再是写一行代码下一条指令，而是通过定义好的“动作组”让 AI 像熟练工一样自动衔接后续步骤。<em>(地址：<a href="https://github.com/garrytan/gstack">https://github.com/garrytan/gstack</a>)</em></p>
+</li>
+</ul>
+<h3 id="二-提高沟通效率的工具动嘴胜过动手">二、 提高沟通效率的工具（动嘴胜过动手）</h3>
+<p><strong>1. 语音输入（Typeless/微信/豆包输入法）</strong></p>
+<ul>
+<li>
+<p>提效神器：面对复杂的业务逻辑，打字太慢了。我习惯直接对着电脑说出我的想法，语音输入法会自动帮我把这些大白话转成更正式的内容。</p>
+</li>
+<li>
+<p>优势：说 1 分钟的话抵得上打 10 分钟字，而且能把细节描述得更清楚。</p>
+</li>
+</ul>
+<p><strong>2. 猛玛 Lark A1 麦克风/有线耳机</strong></p>
+<ul>
+<li>
+<p>收音要准：在办公室干活，为了识别更准、不吵到别人，我会戴着麦克风或有线耳机。只有麦克风收音清楚，语音转出来的文字才没那么多错别字，AI 才不会理解错我的意思。</p>
+<p><img alt="完全不懂编程的我们，通过 Vibe coding 重写了一个App （工具篇）" loading="lazy" decoding="async"  width="1080" height="1343" src="/yuzhens-blog/_astro/02.HvZwKf2X_Zh4WfF.webp" ></p>
+</li>
+</ul>
+<h3 id="三-盯着项目进度的工具">三、 盯着项目进度的工具</h3>
+<p><strong>1. Git（代码撤回与记录）</strong></p>
+<ul>
+<li>
+<p>作用： 每当 AI 改完一个功能并且能跑通时，我就会提交代码。</p>
+</li>
+<li>
+<p>为什么重要：万一 AI 下一步把代码改乱了，我点一下就能直接回到上一个正常的版本。它帮我记录了代码变动的每一步，心里不慌。</p>
+</li>
+</ul>
+<p><strong>2. 飞书 CLI</strong></p>
+<ul>
+<li>
+<p>自动化管理： 我在电脑里装了飞书 CLI 命令行工具，这样我们在 App 里发现的每一个 Bug 都会同步到飞书多维表格里。</p>
+</li>
+<li>
+<p>团队同步： 表格里清清楚楚地写着：BUG 是什么、谁在修、修复没有。</p>
+</li>
+<li>
+<p>群通知： 我们还设了个机器人，AI 每提交一个 PR，群里都会通知。这样团队里的其他人（设计、后端）不用问我，看一眼群消息就知道进度到哪了。</p>
+</li>
+</ul>
+<p>以前，产品经理和设计师的思路往往止于“文档”；现在，借助 AI，我们第一次真正深入到了“实现层”。虽然我们还是不懂怎么手写那些复杂的算法，但我们学会了如何去定义规则、如何去控制质量、如何去调度资源。</p>
+<p>AI 的门槛已经打下来了，接下来的路，不再取决于你是否精通编程语言，而取决于你是否能把问题定义清楚，是否能在那些琐碎的 Bug 中磨练出更高效的协作流程。</p>
+<p>希望这份清单和我们的心路历程，能给准备出发的你一点点底气。</p> </div> </article>  </main> <footer class="site-footer"> <p>Yuzhen&#39;s Blog</p> <p>这是一个缓慢生长的空间，用来存放我的所思所想，以及一些我希望在这个世界上留下的痕迹。</p> </footer> </body></html>
