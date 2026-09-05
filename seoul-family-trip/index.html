@@ -51,6 +51,8 @@
   .day h3{font-weight:500;letter-spacing:.01em}
   .brand{font-weight:500}
   footer .footer-inner strong{font-weight:500}
+  .shopping-panel{padding:24px;background:#fffaf1}.tax-legend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:16px}.tax-tag{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:11px;font-weight:600;white-space:nowrap}.tax-tag.yes{background:#e7f3e8;color:#4d8261;border:1px solid #cce2d0}.tax-tag.maybe{background:#fff0db;color:#a56c42;border:1px solid #efd1a9}.tax-tag.no{background:#f3eeee;color:#897677;border:1px solid #e2d6d6}.tax-note{color:var(--muted);font-size:12px}.shopping-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.shop-item{padding:15px;background:#fffefb;border:1px dashed #d8dfd7;border-radius:14px;position:relative}.shop-item>div{padding-right:100px}.shop-item strong{display:block;color:#536b5e;font-size:15px}.shop-item small{display:block;color:#94a097;margin-top:3px}.shop-item>.tax-tag{position:absolute;right:12px;top:14px}.shop-item p{margin:10px 0 0;color:var(--muted);font-size:13px}.tax-notice{margin-top:16px}
+  @media(max-width:800px){.shopping-grid{grid-template-columns:1fr}.shopping-panel{padding:18px}.shop-item>div{padding-right:0}.shop-item>.tax-tag{position:static;margin-top:8px}}
 </style>
 </head>
 <body>
@@ -62,7 +64,7 @@
     <div class="hero-meta"><span>住：绿磻站 녹번역</span><span>周日 → 周二</span><span>不拍韩服 · 不去水族馆</span><span>辣度 0–1 优先</span></div>
   </div>
 </header>
-<nav class="nav"><div class="nav-inner"><div class="brand">♡ 萌趣地图</div><div class="nav-links"><a href="#route">三日路线</a><a href="#prep">天气穿衣</a><a href="#checklist">必带清单</a><button class="nav-action" onclick="window.print()">打印 / PDF</button></div></div></nav>
+<nav class="nav"><div class="nav-inner"><div class="brand">♡ 萌趣地图</div><div class="nav-links"><a href="#route">三日路线</a><a href="#shopping">购物清单</a><a href="#prep">天气穿衣</a><a href="#checklist">必带清单</a><button class="nav-action" onclick="window.print()">打印 / PDF</button></div></div></nav>
 <main>
   <section id="route">
     <div class="section-head"><div><h2>先看一眼，三天怎么走</h2><p>每一天都按“主景点 → 顺路小点 → 吃饭/休息”排，体力不够时直接跳到绿色备选卡。</p></div></div>
@@ -111,6 +113,21 @@
     <div class="panel fallback shop"><div class="tag">INDOOR PLAN B · 蚕室</div><h3>乐天世界 / 蚕室萌可店</h3><p>适合雨天或想集中买周边。先确认具体楼层、是否需乐园门票、店铺是常设还是快闪。</p><div class="chips"><span class="chip blue">室内</span><span class="chip">出发前复查</span></div><p style="margin-top:10px"><a href="https://www.xiaohongshu.com/search_result?keyword=%E4%B9%90%E5%A4%A9%E4%B8%96%E7%95%8C%20%E8%9A%95%E5%AE%A4%20%E8%90%8C%E5%8F%AF" target="_blank" rel="noreferrer">小红书公开搜索 ↗</a></p></div>
     <div class="panel fallback shop"><div class="tag">LONGER RIDE · 仅作备选</div><h3>Pameus Mall · Teenieping World</h3><p>板桥室内萌可主题空间，约 10:30–19:00 的近期公开信息；常见周二休馆，预约、票价与 9 月安排必须复查。</p><div class="chips"><span class="chip hot">单程 1 小时+</span><span class="chip">周二风险</span></div><p style="margin-top:10px"><a href="https://www.xiaohongshu.com/search_result?keyword=%E5%B8%95%E7%B1%B3%E5%B0%94%E6%96%AF%E8%B4%AD%E7%89%A9%E4%B8%AD%E5%BF%83%20%E8%90%8C%E5%8F%AF" target="_blank" rel="noreferrer">小红书公开搜索 ↗</a></p></div>
   </div></section>
+
+  <section id="shopping"><div class="section-head"><div><h2>购物清单 · 退税标注 🛍️</h2><p>“可退税”不等于购买时直接免税；是否办理成功以门店 Tax Free 标识和当天系统为准。</p></div></div><div class="panel shopping-panel"><div class="tax-legend"><span class="tax-tag yes">可退税</span><span class="tax-tag maybe">需确认</span><span class="tax-tag no">通常不退税</span><span class="tax-note">退税一般需要护照、达到门店最低消费，并在规定期限内将未使用商品带出韩国。</span></div><div class="shopping-grid">
+    <div class="shop-item"><div><strong>定妆喷雾：Anua / Torriden / d’Alba 空姐喷雾</strong><small>Olive Young · 约 ₩10,000–20,000</small></div><span class="tax-tag maybe">可退税 / 需确认</span><p>优先看实际肤感和当天活动；d’Alba 喷雾常见价格较高，买前比较套装与容量。</p></div>
+    <div class="shop-item"><div><strong>防晒：Round Lab / SKIN1004</strong><small>Olive Young 或免税店 · 约 ₩10,000–30,000</small></div><span class="tax-tag maybe">可退税 / 需确认</span><p>免税店与 Olive Young 不是同一套价格体系；看门店是否 Tax Free，别把促销价写成固定价。</p></div>
+    <div class="shop-item"><div><strong>YSL All Hours 粉底液</strong><small>明洞乐天百货专柜 / 市区免税店</small></div><span class="tax-tag maybe">可退税 / 免税店需确认</span><p>专柜通常走游客退税或百货退税柜台；市区免税店可能直接免税但需按航班提货。价格、返点和色号现场比较。</p></div>
+    <div class="shop-item"><div><strong>洗面奶：beplain 绿豆 / Acon 小蓝泡</strong><small>Olive Young · 约 ₩10,000–20,000</small></div><span class="tax-tag maybe">可退税 / 需确认</span><p>两款都先看成分、香味和旅行装；结账出示护照，是否即时退税以门店系统为准。</p></div>
+    <div class="shop-item"><div><strong>面膜：Mediheal / Goodal / Unove 发膜</strong><small>Olive Young · 约 ₩10,000–30,000</small></div><span class="tax-tag maybe">可退税 / 需确认</span><p>Unove 是发膜，不是脸部面膜，建议分开看；套装、买赠和限时折扣出发前复查。</p></div>
+    <div class="shop-item"><div><strong>Adidas 衣服 / MLB 帽子</strong><small>明洞、弘大门店或乐天运动楼层</small></div><span class="tax-tag maybe">可退税 / 需确认</span><p>你提供的折扣、返点属于会员/渠道活动，不能当作固定优惠；现场确认库存、退税和活动条件。</p></div>
+    <div class="shop-item"><div><strong>甜点零食：Bricksand / Golden Piece / Index Caramel / HBAF</strong><small>圣水洞、明洞、百货与伴手礼店</small></div><span class="tax-tag maybe">看门店</span><p>独立甜品店和街边店不一定退税；Bricksand 费南雪注意约 14 天保质期，食品尽量最后购买。</p></div>
+    <div class="shop-item"><div><strong>美妆个护：fwee / Torriden 唇膏 / Hetras 护手霜</strong><small>Olive Young、品牌店</small></div><span class="tax-tag maybe">可退税 / 需确认</span><p>先确认是否为正装、套装或快闪限定；护手霜和唇膏适合做轻量伴手礼。</p></div>
+    <div class="shop-item"><div><strong>创意生活：Wiggle Wiggle / Daiso 拉面锅 / CROW CANYON</strong><small>明洞、圣水洞、Daiso 和生活方式店</small></div><span class="tax-tag maybe">看门店</span><p>大连锁和百货更有机会支持退税；Daiso 小额购物通常不值得专门办理，具体看结账提示。</p></div>
+    <div class="shop-item"><div><strong>咖啡饮品：Anthracite 咖啡豆 / Newmix 速溶咖啡</strong><small>汉南洞、咖啡店、百货或伴手礼店</small></div><span class="tax-tag maybe">看门店</span><p>咖啡店现场饮用不退税；包装咖啡豆或礼盒才可能按商品退税，保存小票并确认门店资格。</p></div>
+    <div class="shop-item"><div><strong>便利店牛奶、布丁、泡面</strong><small>GS25 / CU · 约 ₩1,000–4,000</small></div><span class="tax-tag no">通常不退税</span><p>可试香蕉牛奶、济州限定酸奶、蓝莓希腊酸奶；便利店小额日常消费通常不办理退税。</p></div>
+    <div class="shop-item"><div><strong>年糕、烤肉、咖啡、布丁</strong><small>明洞、圣水洞、弘大</small></div><span class="tax-tag no">不退税</span><p>餐饮服务不属于游客购物退税范围。年糕和泡面可以按不辣偏好另列，火鸡面/麻辣味给大人购买。</p></div>
+  </div><div class="notice tax-notice">🧾 退税小口诀：买之前问 Tax Free → 结账出示护照 → 保存小票和退税单 → 商品保持未使用 → 离境前按机场/市区退税流程办理。最低金额、即时退税上限和退税方式可能调整，9 月出发前再看韩国官方或门店公告。</div></div></section>
 
   <section id="prep"><div class="section-head"><div><h2>天气、穿衣与行前检查</h2><p>轻薄、好走、能应付一阵雨，就是这趟旅行的关键词。</p></div></div><div class="app-grid" style="margin-bottom:18px">
     <div class="app-card"><div class="app-icon" style="background:#e8f0ff">🗺️</div><h3>Naver Map</h3><p>韩国最实用的步行、地铁和店铺地图。搜索韩文店名更准。</p><div class="app-note">必装 · 先收藏 녹번역、圣水洞、景福宫</div><div class="app-note"><a href="https://map.naver.com/" target="_blank" rel="noreferrer">官方网页版 ↗</a></div></div>
